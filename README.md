@@ -8,10 +8,11 @@ node js app for annotating categories in weibo social media posts
 
 
 ### Dependencies
-*ejs
-*express
-*body-parser
-*jquery
+
+* ejs
+* express
+* body-parser
+* jquery
 
 ### Installing
 
