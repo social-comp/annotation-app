@@ -24,12 +24,12 @@ npm install jquery express ejs body-parser
 
 ### Executing program
 
-* How to run the app
+* How to run and start the app
 
 ```
 npm start
 ```
-### How to use
+http://localhost:3000/
 
 
 ## Help
