@@ -39,7 +39,7 @@ npm start
 ```
 http://localhost:3000/
 
-## Things that have not been done + Bugs
+## Things that are not done / bugs
 
 
 
