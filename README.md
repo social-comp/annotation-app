@@ -25,7 +25,7 @@ node js app for annotating categories in weibo social media posts
 ### Installing
 
 ```
-npm install jquery express ejs body-parser
+npm install jquery express ejs body-parser cookie-parser debug ejs helmet http-errors morgan sqlite3
 
 ```
 
