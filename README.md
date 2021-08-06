@@ -8,7 +8,7 @@ node js app for annotating categories in weibo social media posts
 
 
 ### Dependencies
-
+Node v14.16.0
 
     "body-parser": "^1.19.0",
     "cookie-parser": "~1.4.4",
