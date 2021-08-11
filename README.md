@@ -1,10 +1,9 @@
 # Annotation-App
-
+![screenshot of app](https://github.com/social-comp/annotation-app/blob/main/screenshot.png) 
 
 
 ## Description
 node js app for annotating categories in weibo social media posts for Minerva
-![screenshot of app](https://github.com/social-comp/annotation-app/blob/main/screenshot.png) 
 
 
 ### Dependencies
