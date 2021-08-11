@@ -1,0 +1,34 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #32c5ff;
+  margin-left: 7px;
+}
+
+
+
+
+/*next and previous */
+
+
+.content {
+  display: none;
+  margin-left: 7px;
+}
+button {
+  margin-top: 30px;
+  width:6% !important;
+}
+.back {
+  display: none;
+}
+.next {
+  margin-left: 7px;
+}
+.end {
+  display: none;
+}
+/*next and previous end*/
