@@ -110,11 +110,12 @@ var jQuery_1_5_2 = $.noConflict(true);
  
 
     <div class="card">
-
+      <% var index=1; %>    
       <h5 class="card-header"><b>File: </b> <%= filename %></h5>
       <div class="card-body">
         
-        <% var index=1; %>     
+      
+ 
         <% var annotations=[]; %>   
 
         <!--content above here will a constant be on each card -->
@@ -126,15 +127,15 @@ var jQuery_1_5_2 = $.noConflict(true);
              <!--for each?--->    
 
 <div class="content" data-id='<%- index %>' style="display: block;">
-  <h5 class="card-title"><a href= "" target="blank" >link to post</a>  
+
+  <h5 class="card-title">      <%= index %>/<%= posts.length %> 
     <br/>  <br/>
     <b> Original text:  </b>  
     <p class="card-text">
     
-      <%= index %>
+
            <%- posts[0].original_text %>
                     
-       
   
 
       </p>
@@ -647,13 +648,16 @@ Categories:
 <% for (let k = 1; k < posts.length; k++) { %>
 
 
+
 <div class="content" data-id='<%- index %>' >
-  <h5 class="card-title"><a href= "" target="blank" >link to post</a>  
+  
+  <h5 class="card-title"> 
+      <%= index %>/<%= posts.length %>  
+      <!-- you can do link to post here if you would like, if link is in jsonfile like it is in uncensoredsamples.json:  <a href= "posts[k].link" target="blank" >link to post</a>   --> 
     <br/>  <br/>
     <b> Original text:  </b>  
     <p class="card-text">
-    
-      <%= index %>
+
            <%- posts[k].original_text %>
                     
        
