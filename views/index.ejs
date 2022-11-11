@@ -46,7 +46,7 @@ var jQuery_1_5_2 = $.noConflict(true);
  &nbsp;
      <!-- Button trigger modal -->
      <span> <button type="button" class="btn btn-primary" style="background-color:rgb(120, 132, 197) ; margin-bottom:2.5rem !important ;width:150px !important;" data-bs-toggle="modal" data-bs-target="#exampleModal">
-      Instructions
+      Codebook
     </button>   </span> 
 
     <!-- Modal -->
@@ -54,40 +54,13 @@ var jQuery_1_5_2 = $.noConflict(true);
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Instructions</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Codebook</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            Instructions:<br/> 
+            Codebook:<br/> 
 
-            <p>
-
-              Read the text of the Weibo social post and check all the categories and subcategories that apply. In the text fields of each category/subcategory, paste the lines that indicate that the corresponding category applies to the text. 
-              <br/> 
-            Below are the listed categories. If there is a category not listed, annotate it in the "Other" label, specifying the category name and pasting lines of text that go with the category checked.
-
-
-            </p>
-
-
-            Categories: <br/> 
-<p> 
-            (1) Taunting of Foreign Countries - Favorable comparisons of China to other countries; insults to other countries; taunting of pro-democracy, pro-West, pro-individual liberties, or pro-capitalist opinions within China.
-<br/><br/>
-            (2) Argumentative Praise or Criticism - Comments on controversial, Pro/Con (non-valience) issues, as well as claims of wrongdoing or unfairness; praise (usually of the government) or criticism (usually of opponents of the government); taking a position or explaining why a particular viewpoint is correct or (more often) wrong. These posts are often part of a debate, in opposition to a previous post.
-            <br/>   <br/>
-            (3) Nonargumentative Praise or Suggestions - Noncontroversial valience issues which are hard to argue against, such as improving housing and public welfare; praise of current government officials, programs, or policies.
-            It doesn’t respond to alternative, opposing viewpoints, and it includes positive sentiment. It is distinguished from category (2) in that it praises something specific such as the government, its officials, government programs, or initiatives, but does not take issue with another post
-            <br/><br/>
-            (4) Factual Reporting - Descriptions of current government programs, projects, events, or initiatives, or planned or in progress initiatives. Does not include any praise of these programs or events (which would be category (3)), just that they are occurring. Reporting on what government, government officials are doing.
-            <br/><br/>
-            (5) Cheerleading - Patriotism, encouragement and motivation, inspirational quotes and slogans, inspirational quotes from government officials, thankfulness, gratefulness, inspiration or thankfulness for historical and aspirational figures or events, and cultural references and celebrations (e.g., describes traditions, actions, suggestions for the community). Excludes positive sentiment toward particular government leaders or specific policies (which would be category (3)), but includes positive sentiment or general praise toward life, historical figures, model citizens (e.g., Lei Feng; Gong Quanzhen, a model teacher; Guo Chuhui, a patriotic villager), or China in general. 
-            <br/><br/>
-            (6) Other - Irrelevant posts that are entirely personal, commercial (such as ads), jokes, or empty posts that forward information not included. This category is removed and conditioned on in all analyses in this article.
-            <br/><br/>
-          
-          </p>
-
+            <img src="propaganda_categories.png" alt="Propaganda Cetegories" style="width:500px;height:600px;">
 
 
           </div>
@@ -119,525 +92,70 @@ var jQuery_1_5_2 = $.noConflict(true);
         <% var annotations=[]; %>   
 
         <!--content above here will a constant be on each card -->
-        
-          <br/>
-    
-    
-          <div class="content-holder">
-             <!--for each?--->    
+
+
+       
+           
 
 <div class="content" data-id='<%- index %>' style="display: block;">
 
   <h5 class="card-title">      <%= index %>/<%= posts.length %> 
     <br/>  <br/>
-    <b> Original text:  </b>  
+    <b> Created UTC:  </b>  
     <p class="card-text">
     
 
-           <%- posts[0].original_text %>
+           <%- posts[0].created_at %>
                     
   
 
       </p>
     
-      <b> Translated text:   </b>    
+      <b> Tweet:   </b>    
     <p class="card-text">
           
-      <%- posts[0].translated_text %>
+      <%- posts[0].text %>
       </p>
       <%index=index+1; %>       
    
 Categories:
 <br/><br/>
-<form id="myform" action="/gettingdata" method="post">
 
- <!-- Taunting of Foreign Countries -->
-  <div class="form-check">
-    <input class="form-check-input" type="checkbox" value="1" id="taunting"  onclick="toggle(this, 'tauntshow+<%- index %>')" name="Taunting of Foreign Countries" >
-    <label class="form-check-label" for="taunting">
-      Taunting of Foreign Countries 
-    </label>
-    
-    <div style="display:none;" id= 'tauntshow+<%- index %>'> 
-      <textarea id="taunttext+<%- index %>" name="taunttext+<%- index %>"  style="font-size: 1rem;" rows="2" cols="50">
-        </textarea>
-        <br/>
-         <!-- Taunting of Foreign Countries Subcategories -->
-      Subcategories: 
-      <br/>
-  <div style="margin-left: 3%;"> 
-    <input  class="form-check-input" type="checkbox" id="tauntfav"  onclick="toggle(this, 'tauntshowfav+<%- index %>')"  name="Favorable Comparisons of China to Other Countries - Taunting" value="1">
-    <label  label class="form-check-label" for="tauntfav">
-     &nbsp Favorable Comparisons of China to Other Countries
-     <div style="display:none;padding-left: 3%;" id= 'tauntshowfav+<%- index %>'> 
-       <textarea rows="2" cols="30"  >
-    
-       </textarea>
-     </div>
-  </label>
-  
-  <br/>
-  
-    <input  class="form-check-input" type="checkbox" value="" id="tauntins"  onclick="toggle(this, 'tauntshowins+<%- index %>')" name="Insults to Other Countries - Taunting" >
-    <label  label class="form-check-label" for="tauntins">
-     &nbsp Insults to Other Countries
-     <div style="display:none;padding-left: 3%;" id= 'tauntshowins+<%- index %>'> 
-       <textarea rows="2" cols="30">
-    
-       </textarea>
-     </div>
-  </label>
-  
-  
-  
-  <br/>
-  
-  <input  class="form-check-input" type="checkbox" value="" id="tauntpro"  onclick="toggle(this, 'tauntshowpro+<%- index %>')" name="Taunting of Pro-democracy, Pro-West, Pro-individual - Taunting" >
-  <label  label class="form-check-label" for="tauntpro">
-  &nbsp Taunting of Pro-democracy, Pro-West, Pro-individual
-  <div style="display:none;padding-left: 3%;" id='tauntshowpro+<%- index %>'> 
-    <textarea rows="2" cols="30" >
-  
-    </textarea>
-  </div>
-  </label>
-  
-  
-  
-  <br/>
-  
-  
-  <input  class="form-check-input" type="checkbox" value="" id="tauntother" onclick="toggle(this, 'tauntshowother+<%- index %>')" name="Other - Taunting" >
-  <label  label class="form-check-label" for="tauntother">
-  &nbsp Other
-  <div style="display:none;padding-left: 3%;" id='tauntshowother+<%- index %>'> 
-    <textarea rows="2" cols="30" >
-  
-    </textarea>
-  </div>
-  </label>
-  
-  
-  
-  
-  </div>     
-  </div>
-  </div>
-    <!-- End of Taunting of Foreign Countries -->
-  
-    <!-- Argumentative Praise or Criticism  -->
-  <div class="form-check">
-    <input class="form-check-input" type="checkbox" value="" id="argumentative" onclick="toggle(this, 'argshow+<%- index %>')"  name="Argumentative Praise or Criticism"  >
-    <label class="form-check-label" for="argumentative" >
-      Argumentative Praise or Criticism 
-    </label>
-  
-    <div style="display:none;" id= 'argshow+<%- index %>'> 
-      <textarea id="argtext+<%- index %>" name="argtext+<%- index %>"  style="font-size: 1rem;" rows="2" cols="50">
-       
-        </textarea>
-        <br/>
-      Subcategories: 
-      <br/>
-  <div style="margin-left: 3%;"> 
-  
-  
-    <input  class="form-check-input" type="checkbox" id="argcom"  onclick="toggle(this, 'argshowcom+<%- index %>')"  name="Comments on Controversial Issues - Argumentative" value="1">
-    <label  label class="form-check-label" for="argcom">
-     &nbsp Comments on Controversial, Pro/Con (non-valience) Issues
-     <div style="display:none;padding-left: 3%;" id= 'argshowcom+<%- index %>'> 
-       <textarea rows="2" cols="30"  >
-    
-       </textarea>
-     </div>
-  </label>
-  
-  <br/>
-  
-    <input  class="form-check-input" type="checkbox" value="" id="argcl"  onclick="toggle(this, 'argshowcl+<%- index %>')" name="Claims of Wrongdoing or Unfairness - Argumentative " >
-    <label  label class="form-check-label" for="argcl">
-     &nbsp Claims of Wrongdoing or Unfairness
-     <div style="display:none;padding-left: 3%;" id= 'argshowcl+<%- index %>'> 
-       <textarea rows="2" cols="30">
-    
-       </textarea>
-     </div>
-  </label>
-  
-  
-  
-  <br/>
-  
-  <input  class="form-check-input" type="checkbox" value="" id="argpr"  onclick="toggle(this, 'argshowpr+<%- index %>')" name="Praise - Argumentative" >
-  <label  label class="form-check-label" for="argpr">
-  &nbsp Praise (usually of the government) 
-  <div style="display:none;padding-left: 3%;" id='argshowpr+<%- index %>'> 
-    <textarea rows="2" cols="30" >
-    </textarea>
-  </div>
-  </label>
-  
-  
-  
-  <br/>
-  
-  <input  class="form-check-input" type="checkbox" id="argcr"  onclick="toggle(this, 'argshowcr+<%- index %>')" name="Criticism - Argumentative" value="1" >
-  <label  label class="form-check-label" for="argcr">
-  &nbsp Criticism (usually of opponents of the government)
-  <div style="display:none;padding-left: 3%;" id='argshowcr+<%- index %>'> 
-    <textarea rows="2" cols="30" >
-    </textarea>
-  </div>
-  </label>
-  
-  
-  
-  <br/>
-  
-  <input  class="form-check-input" type="checkbox" value="" id="argtak"  onclick="toggle(this, 'argshowtak+<%- index %>')" name="Taking a Position - Argumentative" >
-  <label  label class="form-check-label" for="argtak">
-  &nbsp Taking a Position/Explaining why Viewpoint is Wrong or Correct
-  <div style="display:none;padding-left: 3%;" id='argshowtak+<%- index %>'> 
-    <textarea rows="2" cols="30" >
-  
-    </textarea>
-  </div>
-  </label>
-  
-  <br/>
-  
-  
-  <input  class="form-check-input" type="checkbox" value="" id="argother" onclick="toggle(this, 'argshowother+<%- index %>')" name="Other - Argumentative" >
-  <label  label class="form-check-label" for="argother">
-  &nbsp Other
-  <div style="display:none;padding-left: 3%;" id='argshowother+<%- index %>'> 
-    <textarea rows="2" cols="30" >
-  
-    </textarea>
-  </div>
-  </label>
-  
-  
-  
-  
-  </div>    
-  </div>
-  </div>
-      <!-- End of Argumentative Praise or Criticism  -->
-  
-        <!-- Nonargumentative Praise or Criticism  -->
-  <div class="form-check">
-    <input class="form-check-input" type="checkbox" id="nonargumentative" onclick="toggle(this, 'nonargshow+<%- index %>')"  name="Nonargumentative Praise or Suggestions" value="1">
-    <label class="form-check-label" for="nonargumentative">
-      Nonargumentative Praise or Suggestions
-    </label>
-    <div style="display:none;" id= 'nonargshow+<%- index %>'> 
-      <textarea id="nonargtext+<%- index %>" name="nonargtext+<%- index %>"  style="font-size: 1rem;" rows="2" cols="50">
-       
-        </textarea>
-        <br/>
-      Subcategories: 
-      <br/>
-  <div style="margin-left: 3%;"> 
-  
-  
-  
-    <input  class="form-check-input" type="checkbox" id="nonargpr"  onclick="toggle(this, 'nonargshowpr+<%- index %>')"  name="Praise of Government - Nonargumentative " value="1">
-    <label  label class="form-check-label" for="nonargpr">
-     &nbsp Praise of Current Government Officials, Programs, or Policies
-     <div style="display:none;padding-left: 3%;" id= 'nonargshowpr+<%- index %>'> 
-       <textarea rows="2" cols="30"  >
-       </textarea>
-     </div>
-  </label>
-  
-  <br/>
-  
-    <input  class="form-check-input" type="checkbox" value="" id="nonargimp"  onclick="toggle(this, 'nonargshowimp+<%- index %>')" name="Improving Public Welfare and Housing - Nonargumentative " >
-    <label  label class="form-check-label" for="nonargimp">
-     &nbsp Improving Public Welfare and Housing
-     <div style="display:none;padding-left: 3%;" id= 'nonargshowimp+<%- index %>'> 
-       <textarea rows="2" cols="30">
-       </textarea>
-     </div>
-  </label>
-  <br/>
-  
-  <input  class="form-check-input" type="checkbox" value="" id="nonargrother" onclick="toggle(this, 'nonargshowother+<%- index %>')" name="Other - Nonargumentative" >
-  <label  label class="form-check-label" for="nonargother">
-  &nbsp Other
-  <div style="display:none;padding-left: 3%;" id='nonargshowother+<%- index %>'> 
-    <textarea rows="2" cols="30" >
-  
-    </textarea>
-  </div>
-  </label>
-  
-  
-  
-  
-  </div>
-  </div>
-  </div>
-  
-    <!-- End of Nonargumentative Praise or Criticism  -->
-  
-  
-  
-  
-    <!-- Factual Reporting -->
-  <div class="form-check">
-    <input class=" form-check-input" type="checkbox" id="factual" onclick="toggle(this, 'factshow+<%- index %>')" name="Factual Reporting"  value="1"> 
-    <label class="form-check-label" for="factual" >
-      Factual Reporting 
-    </label>
-  
-    <div style="display:none;" id= 'factshow+<%- index %>'> 
-            <textarea id="factualtext+<%- index %>" name="factualtext+<%- index %>"  style="font-size: 1rem;" rows="2" cols="50">
-             
-              </textarea>
-              <br/>
-            Subcategories: 
-            <br/>
-  <div style="margin-left: 3%;"> 
-            <input  class="form-check-input" type="checkbox" id="factop" onclick="toggle(this, 'factshowop+<%- index %>')"  name="Outside Positive Factual Reporting" value="1">
-             <label  label class="form-check-label" for="factop">
-              &nbsp Outside Positive Factual Reporting
-              <div style="display:none;padding-left: 3%;" id='factshowop+<%- index %>'> 
-                <textarea rows="2" cols="30" >
-                </textarea>
-            
-              </div>
-          </label>
-  
-      
-  <br/>
-  
-          <input  class="form-check-input" type="checkbox" value="" id="factip"  onclick="toggle(this, 'factshowip+<%- index %>')"  name="Negative Neutral Factual Reporting" >
-          <label  label class="form-check-label" for="factip">
-           &nbsp Inside Positive Factual Reporting
-           <div style="display:none;padding-left: 3%;" id= 'factshowip+<%- index %>'> 
-             <textarea rows="2" cols="30"  >
-          
-             </textarea>
-           </div>
-       </label>
-  
-  
-  
-       <br/>
-  
-          <input  class="form-check-input" type="checkbox" value="" id="facton"  onclick="toggle(this, 'factshowon+<%- index %>')" name="Negative Neutral Factual Reporting" >
-          <label  label class="form-check-label" for="facton">
-           &nbsp Outside Neutral Factual Reporting
-           <div style="display:none;padding-left: 3%;" id= 'factshowon+<%- index %>'> 
-             <textarea rows="2" cols="30">
-          
-             </textarea>
-           </div>
-       </label>
-  
-  
-  
-       <br/>
-  
-       <input  class="form-check-input" type="checkbox" value="" id="factin"  onclick="toggle(this, 'factshowin+<%- index %>')" name="Negative Neutral Factual Reporting" >
-       <label  label class="form-check-label" for="factin">
-        &nbsp Inside Neutral Factual Reporting
-        <div style="display:none;padding-left: 3%;" id='factshowin+<%- index %>'> 
-          <textarea rows="2" cols="30" >
-       
-          </textarea>
-        </div>
-    </label>
-  
-  
-       <br/>
-  
-          <input  class="form-check-input" type="checkbox" value="" id="factone"  onclick="toggle(this, 'factshowone+<%- index %>')"  name="Negative Neutral Factual Reporting" >
-          <label  label class="form-check-label" for="factone">
-           &nbsp Outside Negative Factual Reporting
-           <div style="display:none;padding-left: 3%;" id='factshowone+<%- index %>'> 
-             <textarea rows="2" cols="30">
-          
-             </textarea>
-           </div>
-       </label>
-  
-       
-  
-  
-  
-       <br/>
-  
-          <input  class="form-check-input" type="checkbox" value="" id="factine" onclick="toggle(this, 'factshowine+<%- index %>')" name="Negative Neutral Factual Reporting" >
-          <label  label class="form-check-label" for="factine">
-           &nbsp Inside Negative Factual Reporting
-           <div style="display:none;padding-left: 3%;" id='factshowine+<%- index %>'> 
-             <textarea rows="2" cols="30" >
-          
-             </textarea>
-           </div>
-       </label>
-  
-       
-       
-       <br/>
-  
-       <input  class="form-check-input" type="checkbox" value="" id="factother" onclick="toggle(this, 'factshowother+<%- index %>')" name="Other - Factual Reporting" >
-       <label  label class="form-check-label" for="factother">
-      &nbsp Other
-        <div style="display:none;padding-left: 3%;" id='factshowother+<%- index %>'> 
-          <textarea rows="2" cols="30" >
-       
-          </textarea>
-        </div>
-    </label>
-  
-  
-  
-  
-      </div>    
-    </div>
-  </div>
-      <!-- End of Factual Reporting -->
-  
 
-     <!-- Cheerleading -->
-  <div class="form-check">
-    <input class="form-check-input" type="checkbox" value="" id="cheerleading" onclick="toggle(this, 'cheershow+<%- index %>')" name="Cheerleading">
-    <label class="form-check-label" for="cheerleading">
-      Cheerleading
-    </label>
-  
-  
-    <div style="display:none;" id= 'cheershow+<%- index %>'> 
-      <textarea id="cheertext+<%- index %>" name="cheertext+<%- index %>"  style="font-size: 1rem;" rows="2" cols="50">
-        </textarea>
-     
-        <br/>
-        Subcategories: 
-      <br/>
-  <div style="margin-left: 3%;"> 
-      <input  class="form-check-input" type="checkbox" id="cheerpat" onclick="toggle(this, 'cheershowpat+<%- index %>')"  name="Patriotism - Cheerleading" value="1">
-       <label  label class="form-check-label" for="cheerpat">
-        &nbsp Patriotism
-        <div style="display:none;padding-left: 3%;" id='cheershowpat+<%- index %>'> 
-          <textarea rows="2" cols="30" >
-          </textarea>
-      
-        </div>
-    </label>
-  
-  
-  <br/>
-  
-    <input  class="form-check-input" type="checkbox" id="cheerenc"  onclick="toggle(this, 'cheershowenc+<%- index %>')"  name="Encouragement, Motivation, Inspiration - Cheerleading" value="1">
-    <label  label class="form-check-label" for="cheerenc">
-     &nbsp Encouragement, Motivation, Inspiration
-     <div style="display:none;padding-left: 3%;" id= 'cheershowenc+<%- index %>'> 
-       <textarea rows="2" cols="30"  >
-    
-       </textarea>
-     </div>
-  </label>
-  
-  
-  
-  <br/>
-  
-    <input  class="form-check-input" type="checkbox" value="" id="cheerthank"  onclick="toggle(this, 'cheershowthank+<%- index %>')" name="Thankfulness and Gratefulness - Cheerleading" >
-    <label  label class="form-check-label" for="cheerthank">
-     &nbsp Thankfulness and Gratefulness
-     <div style="display:none;padding-left: 3%;" id= 'cheershowthank+<%- index %>'> 
-       <textarea rows="2" cols="30">
-    
-       </textarea>
-     </div>
-  </label>
-  
-  
-  
-  <br/>
-  
-  <input  class="form-check-input" type="checkbox" value="" id="cheerpos"  onclick="toggle(this, 'cheershowpos+<%- index %>')" name="Positive Sentiment and General Praise" >
-  <label  label class="form-check-label" for="cheerpos">
-  &nbsp Positive Sentiment and General Praise
-  <div style="display:none;padding-left: 3%;" id='cheershowpos+<%- index %>'> 
-    <textarea rows="2" cols="30" >
-  
-    </textarea>
-  </div>
-  </label>
-  
-  
-  
-  <br/>
-  
-  
-  
-  <input  class="form-check-input" type="checkbox" value="" id="cheerother" onclick="toggle(this, 'cheershowother+<%- index %>')" name="Other - Cheerleading" >
-  <label  label class="form-check-label" for="cheerother">
-  &nbsp Other
-  <div style="display:none;padding-left: 3%;" id='cheershowother+<%- index %>'> 
-    <textarea rows="2" cols="30" >
-  
-    </textarea>
-  </div>
-  </label>
-  
-  
-  
-  
-  </div>    
-  </div>
-  </div>
-       <!--End of Cheerleading -->
-  
-   <!-- Encouragement/Demand -->
-  <div class="form-check">
-    <input class="form-check-input" type="checkbox"  id="encouragement" onclick="toggle(this, 'encshow+<%- index %>')" name="Encouragement/Demand" value="1">
-    <label class="form-check-label" for="encouragement">
-      Encouragement/Demand
-    </label>
-    <div style="display:none;" id= 'encshow+<%- index %>'> 
-      <textarea id="enctext+<%- index %>" name="enctext+<%- index %>"  style="font-size: 1rem;" rows="2" cols="50">
-       
-        </textarea>
-  </div>
-  </div>
-     <!-- End of Encouragement/Demand -->
-  
+<form id="myform" action="/" method="post" onsubmit="return myFunction();">
 
-        <!--  Irrelevant to Covid-19 -->
+ 
   <div class="form-check">
-    <input class="form-check-input" type="checkbox" value="" id="irrevelevant" onclick="toggle(this, 'irrshow+<%- index %>')"  name="Irrelevant to Covid-19">
-    <label class="form-check-label" for="irrevelevant">
-      Irrelevant to Covid-19
+    <input class="form-check-input" type="checkbox" value="1" id="namecalling"  onclick="toggle(this, 'namecallingshow+<%- index %>')" name="namecalling+<%- index %>" >
+    <label class="form-check-label" for="namecalling">
+      Name Calling 
     </label>
-    <div style="display:none;" id= 'irrshow+<%- index %>'> 
-      <textarea id="irrtext+<%- index %>" name="irrtext+<%- index %>"  style="font-size: 1rem;" rows="2" cols="50">
-       
+    
+    <div style="display:none;" id= 'namecallingshow+<%- index %>'> 
+      <textarea id="namecallingtext+<%- index %>" name="namecallingtext+<%- index %>"  style="font-size: 1rem;" rows="2" cols="50">
         </textarea>
+
   </div>
-  
+    
   </div>
-          <!--End of Irrelevant to Covid-19 -->
+ 
+
   
-  
-    <!-- Other Categories -->
   <div class="form-check">
-    <input class="form-check-input" type="checkbox" id="other" onclick="toggle(this, 'othershow+<%- index %>')" name="Other" value="1">
-    <label class="form-check-label" for="other">
-     Other
+    <input class="form-check-input" type="checkbox" value="1" id="repetition"  onclick="toggle(this, 'repetitionshow+<%- index %>')" name="repetition+<%- index %>" >
+    <label class="form-check-label" for="repetition">
+      Repetition 
     </label>
-    <div style="display:none;" id= 'othershow+<%- index %>'> 
-      <textarea id="othertext+<%- index %>" name="othertext+<%- index %>"  style="font-size: 1rem;" rows="2" cols="50">
+    
+    <div style="display:none;" id= 'repetitionshow+<%- index %>'> 
+      <textarea id="repetitiontext+<%- index %>" name="repetitiontext+<%- index %>"  style="font-size: 1rem;" rows="2" cols="50">
         </textarea>
+
   </div>
-     <!-- End of Other Categories -->
+    
   </div>
-     
+  
+   
   </div>
 
 
@@ -655,530 +173,68 @@ Categories:
       <%= index %>/<%= posts.length %>  
       <!-- you can do link to post here if you would like, if link is in jsonfile like it is in uncensoredsamples.json:  <a href= "posts[k].link" target="blank" >link to post</a>   --> 
     <br/>  <br/>
-    <b> Original text:  </b>  
+    <b> Created UTC:  </b>  
     <p class="card-text">
 
-           <%- posts[k].original_text %>
+           <%- posts[k].created_at %>
                     
        
   
 
       </p>
     
-      <b> Translated text:   </b>    
+      <b> Tweet:   </b>    
     <p class="card-text">
           
-      <%- posts[k].translated_text %>
+      <%- posts[k].text %>
       </p>
       <%index=index+1; %>       
    
 Categories:
 <br/><br/>
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" value="1" id="taunting"  onclick="toggle(this, 'tauntshow+<%- index %>')" name="Taunting of Foreign Countries" >
-  <label class="form-check-label" for="taunting">
-    Taunting of Foreign Countries 
-  </label>
-  
-  <div style="display:none;" id= 'tauntshow+<%- index %>'> 
-    <textarea id="taunttext+<%- index %>" name="taunttext+<%- index %>"  style="font-size: 1rem;" rows="2" cols="50">
-     
-      </textarea>
-      <br/>
-    Subcategories: 
-    <br/>
-<div style="margin-left: 3%;"> 
-
-
-
-  <input  class="form-check-input" type="checkbox" id="tauntfav"  onclick="toggle(this, 'tauntshowfav+<%- index %>')"  name="Favorable Comparisons of China to Other Countries - Taunting" value="1">
-  <label  label class="form-check-label" for="tauntfav">
-   &nbsp Favorable Comparisons of China to Other Countries
-   <div style="display:none;padding-left: 3%;" id= 'tauntshowfav+<%- index %>'> 
-     <textarea rows="2" cols="30"  >
-  
-     </textarea>
-   </div>
-</label>
-
-<br/>
-
-  <input  class="form-check-input" type="checkbox" value="" id="tauntins"  onclick="toggle(this, 'tauntshowins+<%- index %>')" name="Insults to Other Countries - Taunting" >
-  <label  label class="form-check-label" for="tauntins">
-   &nbsp Insults to Other Countries
-   <div style="display:none;padding-left: 3%;" id= 'tauntshowins+<%- index %>'> 
-     <textarea rows="2" cols="30">
-  
-     </textarea>
-   </div>
-</label>
-
-
-
-<br/>
-
-<input  class="form-check-input" type="checkbox" value="" id="tauntpro"  onclick="toggle(this, 'tauntshowpro+<%- index %>')" name="Taunting of Pro-democracy, Pro-West, Pro-individual - Taunting" >
-<label  label class="form-check-label" for="tauntpro">
-&nbsp Taunting of Pro-democracy, Pro-West, Pro-individual
-<div style="display:none;padding-left: 3%;" id='tauntshowpro+<%- index %>'> 
-  <textarea rows="2" cols="30" >
-
-  </textarea>
-</div>
-</label>
-
-
-
-<br/>
-
-
-<input  class="form-check-input" type="checkbox" value="" id="tauntother" onclick="toggle(this, 'tauntshowother+<%- index %>')" name="Other - Taunting" >
-<label  label class="form-check-label" for="tauntother">
-&nbsp Other
-<div style="display:none;padding-left: 3%;" id='tauntshowother+<%- index %>'> 
-  <textarea rows="2" cols="30" >
-
-  </textarea>
-</div>
-</label>
-
-
-
-
-</div>    
-
-
-
-</div>
-
-
-
-  
-</div>
-
-
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="argumentative" onclick="toggle(this, 'argshow+<%- index %>')"  name="Argumentative Praise or Criticism"  >
-  <label class="form-check-label" for="argumentative" >
-    Argumentative Praise or Criticism 
-  </label>
-
-  <div style="display:none;" id= 'argshow+<%- index %>'> 
-    <textarea id="argtext+<%- index %>" name="argtext+<%- index %>"  style="font-size: 1rem;" rows="2" cols="50">
-     
-      </textarea>
-      <br/>
-    Subcategories: 
-    <br/>
-<div style="margin-left: 3%;"> 
-
-
-  <input  class="form-check-input" type="checkbox" id="argcom"  onclick="toggle(this, 'argshowcom+<%- index %>')"  name="Comments on Controversial Issues - Argumentative" value="1">
-  <label  label class="form-check-label" for="argcom">
-   &nbsp Comments on Controversial, Pro/Con (non-valience) Issues
-   <div style="display:none;padding-left: 3%;" id= 'argshowcom+<%- index %>'> 
-     <textarea rows="2" cols="30"  >
-  
-     </textarea>
-   </div>
-</label>
-
-<br/>
-
-  <input  class="form-check-input" type="checkbox" value="" id="argcl"  onclick="toggle(this, 'argshowcl+<%- index %>')" name="Claims of Wrongdoing or Unfairness - Argumentative " >
-  <label  label class="form-check-label" for="argcl">
-   &nbsp Claims of Wrongdoing or Unfairness
-   <div style="display:none;padding-left: 3%;" id= 'argshowcl+<%- index %>'> 
-     <textarea rows="2" cols="30">
-  
-     </textarea>
-   </div>
-</label>
-
-
-
-<br/>
-
-<input  class="form-check-input" type="checkbox" value="" id="argpr"  onclick="toggle(this, 'argshowpr+<%- index %>')" name="Praise - Argumentative" >
-<label  label class="form-check-label" for="argpr">
-&nbsp Praise (usually of the government) 
-<div style="display:none;padding-left: 3%;" id='argshowpr+<%- index %>'> 
-  <textarea rows="2" cols="30" >
-  </textarea>
-</div>
-</label>
-
-
-
-<br/>
-
-<input  class="form-check-input" type="checkbox" id="argcr"  onclick="toggle(this, 'argshowcr+<%- index %>')" name="Criticism - Argumentative" value="1" >
-<label  label class="form-check-label" for="argcr">
-&nbsp Criticism (usually of opponents of the government)
-<div style="display:none;padding-left: 3%;" id='argshowcr+<%- index %>'> 
-  <textarea rows="2" cols="30" >
-  </textarea>
-</div>
-</label>
-
-
-
-<br/>
-
-<input  class="form-check-input" type="checkbox" value="" id="argtak"  onclick="toggle(this, 'argshowtak+<%- index %>')" name="Taking a Position - Argumentative" >
-<label  label class="form-check-label" for="argtak">
-&nbsp Taking a Position/Explaining why Viewpoint is Wrong or Correct
-<div style="display:none;padding-left: 3%;" id='argshowtak+<%- index %>'> 
-  <textarea rows="2" cols="30" >
-
-  </textarea>
-</div>
-</label>
-
-<br/>
-
-
-<input  class="form-check-input" type="checkbox" value="" id="argother" onclick="toggle(this, 'argshowother+<%- index %>')" name="Other - Argumentative" >
-<label  label class="form-check-label" for="argother">
-&nbsp Other
-<div style="display:none;padding-left: 3%;" id='argshowother+<%- index %>'> 
-  <textarea rows="2" cols="30" >
-
-  </textarea>
-</div>
-</label>
-
-
-
-
-</div>    
-</div>
-</div>
-
-
-
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" id="nonargumentative" onclick="toggle(this, 'nonargshow+<%- index %>')"  name="Nonargumentative Praise or Suggestions" value="1">
-  <label class="form-check-label" for="nonargumentative">
-    Nonargumentative Praise or Suggestions
-  </label>
-  <div style="display:none;" id= 'nonargshow+<%- index %>'> 
-    <textarea id="nonargtext+<%- index %>" name="nonargtext+<%- index %>"  style="font-size: 1rem;" rows="2" cols="50">
-     
-      </textarea>
-      <br/>
-    Subcategories: 
-    <br/>
-<div style="margin-left: 3%;"> 
-
-
-
-  <input  class="form-check-input" type="checkbox" id="nonargpr"  onclick="toggle(this, 'nonargshowpr+<%- index %>')"  name="Praise of Government - Nonargumentative " value="1">
-  <label  label class="form-check-label" for="nonargpr">
-   &nbsp Praise of Current Government Officials, Programs, or Policies
-   <div style="display:none;padding-left: 3%;" id= 'nonargshowpr+<%- index %>'> 
-     <textarea rows="2" cols="30"  >
-     </textarea>
-   </div>
-</label>
-
-<br/>
-
-  <input  class="form-check-input" type="checkbox" value="" id="nonargimp"  onclick="toggle(this, 'nonargshowimp+<%- index %>')" name="Improving Public Welfare and Housing - Nonargumentative " >
-  <label  label class="form-check-label" for="nonargimp">
-   &nbsp Improving Public Welfare and Housing
-   <div style="display:none;padding-left: 3%;" id= 'nonargshowimp+<%- index %>'> 
-     <textarea rows="2" cols="30">
-     </textarea>
-   </div>
-</label>
-<br/>
-
-<input  class="form-check-input" type="checkbox" value="" id="nonargrother" onclick="toggle(this, 'nonargshowother+<%- index %>')" name="Other - Nonargumentative" >
-<label  label class="form-check-label" for="nonargother">
-&nbsp Other
-<div style="display:none;padding-left: 3%;" id='nonargshowother+<%- index %>'> 
-  <textarea rows="2" cols="30" >
-
-  </textarea>
-</div>
-</label>
-
-
-
-
-</div>
-</div>
-</div>
-
-
-
-
-
-
-
-<div class="form-check">
-  <input class=" form-check-input" type="checkbox" id="factual" onclick="toggle(this, 'factshow+<%- index %>')" name="Factual Reporting"  value="1"> 
-  <label class="form-check-label" for="factual" >
-    Factual Reporting 
-  </label>
-
-  <div style="display:none;" id= 'factshow+<%- index %>'> 
-          <textarea id="factualtext+<%- index %>" name="factualtext+<%- index %>"  style="font-size: 1rem;" rows="2" cols="50">
-           
-            </textarea>
-            <br/>
-          Subcategories: 
-          <br/>
-<div style="margin-left: 3%;"> 
-          <input  class="form-check-input" type="checkbox" id="factop" onclick="toggle(this, 'factshowop+<%- index %>')"  name="Outside Positive Factual Reporting" value="1">
-           <label  label class="form-check-label" for="factop">
-            &nbsp Outside Positive Factual Reporting
-            <div style="display:none;padding-left: 3%;" id='factshowop+<%- index %>'> 
-              <textarea rows="2" cols="30" >
-              </textarea>
-          
-            </div>
-        </label>
-
+ <!-- Name calling -->
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="1" id="namecalling"  onclick="toggle(this, 'namecallingshow+<%- index %>')" name="namecalling+<%- index %>" >
+    <label class="form-check-label" for="namecalling">
+      Name Calling 
+    </label>
     
-<br/>
-
-        <input  class="form-check-input" type="checkbox" value="" id="factip"  onclick="toggle(this, 'factshowip+<%- index %>')"  name="Negative Neutral Factual Reporting" >
-        <label  label class="form-check-label" for="factip">
-         &nbsp Inside Positive Factual Reporting
-         <div style="display:none;padding-left: 3%;" id= 'factshowip+<%- index %>'> 
-           <textarea rows="2" cols="30"  >
-        
-           </textarea>
-         </div>
-     </label>
-
-
-
-     <br/>
-
-        <input  class="form-check-input" type="checkbox" value="" id="facton"  onclick="toggle(this, 'factshowon+<%- index %>')" name="Negative Neutral Factual Reporting" >
-        <label  label class="form-check-label" for="facton">
-         &nbsp Outside Neutral Factual Reporting
-         <div style="display:none;padding-left: 3%;" id= 'factshowon+<%- index %>'> 
-           <textarea rows="2" cols="30">
-        
-           </textarea>
-         </div>
-     </label>
-
-
-
-     <br/>
-
-     <input  class="form-check-input" type="checkbox" value="" id="factin"  onclick="toggle(this, 'factshowin+<%- index %>')" name="Negative Neutral Factual Reporting" >
-     <label  label class="form-check-label" for="factin">
-      &nbsp Inside Neutral Factual Reporting
-      <div style="display:none;padding-left: 3%;" id='factshowin+<%- index %>'> 
-        <textarea rows="2" cols="30" >
-     
+    <div style="display:none;" id= 'namecallingshow+<%- index %>'> 
+      <textarea id="namecallingtext+<%- index %>" name="namecallingtext+<%- index %>"  style="font-size: 1rem;" rows="2" cols="50">
         </textarea>
-      </div>
-  </label>
 
-
-     <br/>
-
-        <input  class="form-check-input" type="checkbox" value="" id="factone"  onclick="toggle(this, 'factshowone+<%- index %>')"  name="Negative Neutral Factual Reporting" >
-        <label  label class="form-check-label" for="factone">
-         &nbsp Outside Negative Factual Reporting
-         <div style="display:none;padding-left: 3%;" id='factshowone+<%- index %>'> 
-           <textarea rows="2" cols="30">
-        
-           </textarea>
-         </div>
-     </label>
-
-     
-
-
-
-     <br/>
-
-        <input  class="form-check-input" type="checkbox" value="" id="factine" onclick="toggle(this, 'factshowine+<%- index %>')" name="Negative Neutral Factual Reporting" >
-        <label  label class="form-check-label" for="factine">
-         &nbsp Inside Negative Factual Reporting
-         <div style="display:none;padding-left: 3%;" id='factshowine+<%- index %>'> 
-           <textarea rows="2" cols="30" >
-        
-           </textarea>
-         </div>
-     </label>
-
-     
-     
-     <br/>
-
-     <input  class="form-check-input" type="checkbox" value="" id="factother" onclick="toggle(this, 'factshowother+<%- index %>')" name="Other - Factual Reporting" >
-     <label  label class="form-check-label" for="factother">
-    &nbsp Other
-      <div style="display:none;padding-left: 3%;" id='factshowother+<%- index %>'> 
-        <textarea rows="2" cols="30" >
-     
-        </textarea>
-      </div>
-  </label>
-
-
-
-
-    </div>    
-
-
-  
   </div>
-
-</div>
-
-
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="cheerleading" onclick="toggle(this, 'cheershow+<%- index %>')" name="Cheerleading">
-  <label class="form-check-label" for="cheerleading">
-    Cheerleading
-  </label>
-
-
-  <div style="display:none;" id= 'cheershow+<%- index %>'> 
-    <textarea id="cheertext+<%- index %>" name="cheertext+<%- index %>"  style="font-size: 1rem;" rows="2" cols="50">
      
-      </textarea>
-   
-      <br/>
-      Subcategories: 
-    <br/>
-<div style="margin-left: 3%;"> 
-    <input  class="form-check-input" type="checkbox" id="cheerpat" onclick="toggle(this, 'cheershowpat+<%- index %>')"  name="Patriotism - Cheerleading" value="1">
-     <label  label class="form-check-label" for="cheerpat">
-      &nbsp Patriotism
-      <div style="display:none;padding-left: 3%;" id='cheershowpat+<%- index %>'> 
-        <textarea rows="2" cols="30" >
-        </textarea>
+  </div>
+    <!-- End of Name calling -->
+
+  <!-- Repetition -->
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="1" id="repetition"  onclick="toggle(this, 'repetitionshow+<%- index %>')" name="repetition+<%- index %>" >
+    <label class="form-check-label" for="repetition">
+      Repetition 
+    </label>
     
-      </div>
-  </label>
+    <div style="display:none;" id= 'repetitionshow+<%- index %>'> 
+      <textarea id="repetitiontext+<%- index %>" name="repetitiontext+<%- index %>"  style="font-size: 1rem;" rows="2" cols="50">
+        </textarea>
 
-
-<br/>
-
-  <input  class="form-check-input" type="checkbox" id="cheerenc"  onclick="toggle(this, 'cheershowenc+<%- index %>')"  name="Encouragement, Motivation, Inspiration - Cheerleading" value="1">
-  <label  label class="form-check-label" for="cheerenc">
-   &nbsp Encouragement, Motivation, Inspiration
-   <div style="display:none;padding-left: 3%;" id= 'cheershowenc+<%- index %>'> 
-     <textarea rows="2" cols="30"  >
-  
-     </textarea>
-   </div>
-</label>
-
-
-
-<br/>
-
-  <input  class="form-check-input" type="checkbox" value="" id="cheerthank"  onclick="toggle(this, 'cheershowthank+<%- index %>')" name="Thankfulness and Gratefulness - Cheerleading" >
-  <label  label class="form-check-label" for="cheerthank">
-   &nbsp Thankfulness and Gratefulness
-   <div style="display:none;padding-left: 3%;" id= 'cheershowthank+<%- index %>'> 
-     <textarea rows="2" cols="30">
-  
-     </textarea>
-   </div>
-</label>
-
-
-
-<br/>
-
-<input  class="form-check-input" type="checkbox" value="" id="cheerpos"  onclick="toggle(this, 'cheershowpos+<%- index %>')" name="Positive Sentiment and General Praise" >
-<label  label class="form-check-label" for="cheerpos">
-&nbsp Positive Sentiment and General Praise
-<div style="display:none;padding-left: 3%;" id='cheershowpos+<%- index %>'> 
-  <textarea rows="2" cols="30" >
-
-  </textarea>
-</div>
-</label>
-
-
-
-<br/>
-
-
-
-<input  class="form-check-input" type="checkbox" value="" id="cheerother" onclick="toggle(this, 'cheershowother+<%- index %>')" name="Other - Cheerleading" >
-<label  label class="form-check-label" for="cheerother">
-&nbsp Other
-<div style="display:none;padding-left: 3%;" id='cheershowother+<%- index %>'> 
-  <textarea rows="2" cols="30" >
-
-  </textarea>
-</div>
-</label>
-
-
-
-
-</div>    
-
-
-
-</div>
-
-</div>
-
-
-<div class="form-check">
-  <input class="form-check-input" type="checkbox"  id="encouragement" onclick="toggle(this, 'encshow+<%- index %>')" name="Encouragement/Demand" value="1">
-  <label class="form-check-label" for="encouragement">
-    Encouragement/Demand
-  </label>
-  <div style="display:none;" id= 'encshow+<%- index %>'> 
-    <textarea id="enctext+<%- index %>" name="enctext+<%- index %>"  style="font-size: 1rem;" rows="2" cols="50">
-     
-      </textarea>
-</div>
-</div>
-
-
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" value="" id="irrevelevant" onclick="toggle(this, 'irrshow+<%- index %>')"  name="Irrelevant to Covid-19">
-  <label class="form-check-label" for="irrevelevant">
-    Irrelevant to Covid-19
-  </label>
-  <div style="display:none;" id= 'irrshow+<%- index %>'> 
-    <textarea id="irrtext+<%- index %>" name="irrtext+<%- index %>"  style="font-size: 1rem;" rows="2" cols="50">
-     
-      </textarea>
-</div>
-
-</div>
-
-
-
-
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" id="other" onclick="toggle(this, 'othershow+<%- index %>')" name="Other" value="1">
-  <label class="form-check-label" for="other">
-   Other
-  </label>
-  <div style="display:none;" id= 'othershow+<%- index %>'> 
-    <textarea id="othertext+<%- index %>" name="othertext+<%- index %>"  style="font-size: 1rem;" rows="2" cols="50">
-     
-      </textarea>
-</div>
-
-
-</div>
-
-<br/>
+  </div>
+    
+  </div>
+  <!-- End of Repetition -->
+   
 
       
 </div>
+
+
+
+
+<!--<button type="submit" class="makejson btn btn-primary" value="Save to JSON file" style="width:25% !important"></button>-->
+
+
+
 
 
 <% } %>
@@ -1194,15 +250,27 @@ Categories:
 Back
 </button>
 
-  <button style="background-color:gray" type="button" onclick="myFunction()" class="next btn btn-primary"  data-toggle="button" aria-pressed="false" autocomplete="off">
-    Next
-      </button>
+<!-- 
+<button action="/save" method="post" style="background-color:gray" type="button" onclick="myFunction('<%= writefile %>')" class="save btn btn-primary"  aria-pressed="false" autocomplete="off">
+Save
+</button>
+-->
+
+
+<button style="background-color:gray" type="button" id="next" class="next btn btn-primary"  data-toggle="button" aria-pressed="false" autocomplete="off">
+Next
+</button>
+
+
+
+
+
 </div>
       <br/>       <br/>       <br/>
   
 
 
- 
+      
 
        <div class="end" data-id='<%- index %>'  >
 
@@ -1211,7 +279,7 @@ Back
    
       </div>
 
-
+      
 
   </div>
 
@@ -1225,37 +293,21 @@ Back
 
   </body>
 
-  <script>
-    function myFunction() {
-      
-      var data = fs.readFileSync('sophia.json');
-      post[index-1] ="1"; 
-      // Adding the new data to our object
-
-        
-      // Writing to our JSON file
-      var newData2 = JSON.stringify(posts);
-      fs.writeFile(annotatedfile, newData2, (err) => {
-        // Error checking
-        if (err) throw err;
-        console.log("New data added");
-      });
 
 
 
-    }
-    </script>
-
-
-
-
+  
   <script src="/javascripts/nextprev.js"></script>
   <script src="/javascripts/hideandshow.js"></script>
   <script src="/javascripts/ifchecked.js"></script>
+  <script src="/javascripts/save.js"></script>
+
+
 <script>
 
 
 function toggle(ele, id) {
+        // console.log("went back")
         var cont = document.getElementById(id);
         if (cont.style.display == 'block') {
             cont.style.display = 'none';

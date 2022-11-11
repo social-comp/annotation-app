@@ -28,6 +28,9 @@ button {
 .next {
   margin-left: 7px;
 }
+.save {
+  margin - left: 14px;
+}
 .end {
   display: none;
 }

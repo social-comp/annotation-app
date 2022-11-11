@@ -44,6 +44,27 @@ jQuery_1_11_0('body').on('click', '.next', function() {
     }
 });
 
+
+jQuery_1_11_0('body').on('click', '.save', function(req) { 
+    var id = data('id')
+    var text = data('text')
+
+    var nC = req.body.namecalling
+    var rP = req.body.repetition
+
+    var annotatedfile = 'shruti.json';
+
+    const jsonString = JSON.stringify(nC);
+
+    fs.writeFile(annotatedfile, text);
+    fs.writeFile(annotatedfile, jsonString);
+
+    console.log("Save button pressed");
+
+
+
+});
+
 jQuery_1_11_0('body').on('click', '.back', function() { 
     var id = $('.content:visible').data('id');
     var prevId = $('.content:visible').data('id')-1;

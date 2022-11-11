@@ -12,7 +12,7 @@ var appjs = require('../app.js');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', 
-  { title: 'Annotator', filename:appjs.filename, posts:appjs.posts
+  { title: 'Annotator', filename:appjs.filename, posts:appjs.posts,writefile:appjs.writefile
 
   });
 });

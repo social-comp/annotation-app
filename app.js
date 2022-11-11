@@ -3,9 +3,15 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var bodyParser = require('body-parser');
+// const multer = require('multer');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+
+const FormData = require('form-data');
+
+// var functions = require('./javascript/save');
 
 var app = express();
 
@@ -15,6 +21,10 @@ app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
 app.use(express.json());
+
+app.use(bodyParser.json());                        
+
+
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -23,9 +33,9 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  next(createError(404));
-});
+// app.use(function(req, res, next) {
+  //next(createError(404));
+//});
 
 // error handler
 app.use(function(err, req, res, next) {
@@ -37,7 +47,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
 
 
 
@@ -58,7 +67,9 @@ const fs = require('fs');
 
 
 
-var filename= 'censoredsamples.json'; //put your JSON file here
+
+var filename= './data/new_ebola.json'; //put your JSON file here
+var writefile = './data/annotated.json';
 
 try{
   let rawdata = fs.readFileSync(filename);
@@ -66,6 +77,7 @@ try{
   //console.log(posts);
   exports.filename = filename;
   exports.posts = posts;
+  exports.writefile = writefile;
   this.posts=posts;
 
 }catch(err){
@@ -73,8 +85,15 @@ try{
 }
 
 
-//testing out how to write to JSON file
+app.post('/gettingdata', function(req, res, next){
+   // req.body object has your form values
+   console.log("done with annotating");
+   console.log(res.namecalling);
+   console.log(res.repetition);
+});
 /*
+//testing out how to write to JSON file
+
 var annotatedfile = 'sophia.json';
 //duplicate file  to write to/ append to
 fs.copyFile(filename, annotatedfile, (err) => {
@@ -114,18 +133,45 @@ posts.forEach(function(post) {
 
 //end of testing 
 
+
+
+
 */
 
+app.post('/save', function(req, res){
+  console.log(req.namecalling);
+
+
+});
 
 
 
 
 
-
-
-/*
 app.get('/', function(req, res){
   response.render("index", {posts: posts});
 });
-*/
 
+
+app.post('/', function(req, res){
+
+  console.log(req.body);
+
+  
+
+  var formData = req.body;
+  var jsonString = JSON.stringify(formData);
+  fs.writeFile('shruti.json', jsonString, (err) => {
+    // Error checking
+    if (err) throw err;
+    console.log("New data added");
+  });
+
+  /*
+  */
+
+  console.log("Submitted");
+  res.send("All good!");
+
+  
+});
