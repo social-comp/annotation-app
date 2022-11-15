@@ -24,10 +24,7 @@ var jQuery_1_4_4 = $.noConflict(true);
 var jQuery_1_5_2 = $.noConflict(true);
 </script>
 
-
-
-
-    
+   
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
    
 
@@ -100,16 +97,6 @@ var jQuery_1_5_2 = $.noConflict(true);
 <div class="content" data-id='<%- index %>' style="display: block;">
 
   <h5 class="card-title">      <%= index %>/<%= posts.length %> 
-    <br/>  <br/>
-    <b> Created UTC:  </b>  
-    <p class="card-text">
-    
-
-           <%- posts[0].created_at %>
-                    
-  
-
-      </p>
     
       <b> Tweet:   </b>    
     <p class="card-text">
@@ -119,21 +106,33 @@ var jQuery_1_5_2 = $.noConflict(true);
       <%index=index+1; %>       
    
 Categories:
-<br/><br/>
+<br/>
 
 
 <form id="myform" action="/" method="post" onsubmit="return myFunction();">
 
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="1" id="claim"  onclick="toggle(this, 'claimshow+<%- index %>')" name="claim+<%- index %>" >
+    <label class="form-check-label" style="font-size: 16px;" for="claim">
+      Is there a claim? 
+    </label>
+    
+    <div style="display:none;" id= 'claimshow+<%- index %>'> 
+      <textarea id="claimtext+<%- index %>" name="claimtext+<%- index %>"  style="font-size: 14px;" rows="2" cols="50"></textarea>
+
+  </div>
+     
+  </div>
+
  
   <div class="form-check">
     <input class="form-check-input" type="checkbox" value="1" id="namecalling"  onclick="toggle(this, 'namecallingshow+<%- index %>')" name="namecalling+<%- index %>" >
-    <label class="form-check-label" for="namecalling">
+    <label class="form-check-label" style="font-size: 16px;" for="namecalling">
       Name Calling 
     </label>
     
     <div style="display:none;" id= 'namecallingshow+<%- index %>'> 
-      <textarea id="namecallingtext+<%- index %>" name="namecallingtext+<%- index %>"  style="font-size: 1rem;" rows="2" cols="50">
-        </textarea>
+      <textarea id="namecallingtext+<%- index %>" name="namecallingtext+<%- index %>"  style="font-size: 14px;" rows="2" cols="50"></textarea>
 
   </div>
     
@@ -143,18 +142,227 @@ Categories:
   
   <div class="form-check">
     <input class="form-check-input" type="checkbox" value="1" id="repetition"  onclick="toggle(this, 'repetitionshow+<%- index %>')" name="repetition+<%- index %>" >
-    <label class="form-check-label" for="repetition">
+    <label class="form-check-label" style="font-size: 16px;" for="repetition">
       Repetition 
     </label>
     
     <div style="display:none;" id= 'repetitionshow+<%- index %>'> 
-      <textarea id="repetitiontext+<%- index %>" name="repetitiontext+<%- index %>"  style="font-size: 1rem;" rows="2" cols="50">
-        </textarea>
+      <textarea id="repetitiontext+<%- index %>" name="repetitiontext+<%- index %>"  style="font-size: 14px;" rows="2" cols="50"></textarea>
 
   </div>
     
   </div>
   
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="1" id="slogan"  onclick="toggle(this, 'sloganshow+<%- index %>')" name="slogan+<%- index %>" >
+    <label class="form-check-label" style="font-size: 16px;" for="slogan">
+      Slogan 
+    </label>
+    
+    <div style="display:none;" id= 'sloganshow+<%- index %>'> 
+      <textarea id="slogantext+<%- index %>" name="slogantext+<%- index %>"  style="font-size: 14px;" rows="2" cols="50"></textarea>
+
+  </div>
+    
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="1" id="appealfear"  onclick="toggle(this, 'appealfearshow+<%- index %>')" name="appealfear+<%- index %>" >
+    <label class="form-check-label" style="font-size: 16px;" for="appealfear">
+      Appeal to fear 
+    </label>
+    
+    <div style="display:none;" id= 'appealfearshow+<%- index %>'> 
+      <textarea id="appealfeartext+<%- index %>" name="appealfeartext+<%- index %>"  style="font-size: 14px;" rows="2" cols="50"></textarea>
+
+  </div>
+    
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="1" id="doubt"  onclick="toggle(this, 'doubtshow+<%- index %>')" name="doubt+<%- index %>" >
+    <label class="form-check-label" style="font-size: 16px;" for="doubt">
+      Doubt 
+    </label>
+    
+    <div style="display:none;" id='doubtshow+<%- index %>'> 
+      <textarea id="doubttext+<%- index %>" name="doubttext+<%- index %>"  style="font-size: 14px;" rows="2" cols="50"></textarea>
+
+  </div>
+    
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="1" id="exagger"  onclick="toggle(this, 'exaggershow+<%- index %>')" name="exagger+<%- index %>" >
+    <label class="form-check-label" style="font-size: 16px;" for="exagger">
+      Exaggeration or Minimization 
+    </label>
+    
+    <div style="display:none;" id= 'exaggershow+<%- index %>'> 
+      <textarea id="exaggertext+<%- index %>" name="exaggertext+<%- index %>"  style="font-size: 14px;" rows="2" cols="50"></textarea>
+
+  </div>
+    
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="1" id="flagwave"  onclick="toggle(this, 'flagwaveshow+<%- index %>')" name="flagwave+<%- index %>" >
+    <label class="form-check-label" style="font-size: 16px;" for="flagwave">
+      Flag waving 
+    </label>
+    
+    <div style="display:none;" id= 'flagwaveshow+<%- index %>'> 
+      <textarea id="flagwavetext+<%- index %>" name="flagwavetext+<%- index %>"  style="font-size: 14px;" rows="2" cols="50"></textarea>
+
+  </div>
+    
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="1" id="loaded"  onclick="toggle(this, 'loadedshow+<%- index %>')" name="loaded+<%- index %>" >
+    <label class="form-check-label" style="font-size: 16px;" for="loaded">
+      Loaded language 
+    </label>
+    
+    <div style="display:none;" id= 'loadedshow+<%- index %>'> 
+      <textarea id="loadedtext+<%- index %>" name="loadedtext+<%- index %>"  style="font-size: 14px;" rows="2" cols="50"></textarea>
+
+  </div>
+    
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="1" id="reduct"  onclick="toggle(this, 'reductshow+<%- index %>')" name="reduct+<%- index %>" >
+    <label class="form-check-label" style="font-size: 16px;" for="reduct">
+      Reduction ad hitlerum 
+    </label>
+    
+    <div style="display:none;" id= 'reductshow+<%- index %>'> 
+      <textarea id="reducttext+<%- index %>" name="reducttext+<%- index %>"  style="font-size: 14px;" rows="2" cols="50"></textarea>
+
+  </div>
+    
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="1" id="bandwagon"  onclick="toggle(this, 'bandwagonshow+<%- index %>')" name="bandwagon+<%- index %>" >
+    <label class="form-check-label" style="font-size: 16px;" for="bandwagon">
+      Bandwagon 
+    </label>
+    
+    <div style="display:none;" id= 'bandwagonshow+<%- index %>'> 
+      <textarea id="bandwagontext+<%- index %>" name="bandwagontext+<%- index %>"  style="font-size: 14px;" rows="2" cols="50"></textarea>
+
+  </div>
+    
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="1" id="oversimp"  onclick="toggle(this, 'oversimpshow+<%- index %>')" name="oversimp+<%- index %>" >
+    <label class="form-check-label" style="font-size: 16px;" for="oversimp">
+      Causal oversimplification 
+    </label>
+    
+    <div style="display:none;" id= 'oversimpshow+<%- index %>'> 
+      <textarea id="oversimptext+<%- index %>" name="oversimptext+<%- index %>"  style="font-size: 14px;" rows="2" cols="50"></textarea>
+
+  </div>
+    
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="1" id="obfusc"  onclick="toggle(this, 'obfuscshow+<%- index %>')" name="obfusc+<%- index %>" >
+    <label class="form-check-label" style="font-size: 16px;" for="obfusc">
+      Obfuscation or vagueness
+    </label>
+    
+    <div style="display:none;" id= 'obfuscshow+<%- index %>'> 
+      <textarea id="obfusctext+<%- index %>" name="obfusctext+<%- index %>"  style="font-size: 14px;" rows="2" cols="50"></textarea>
+
+  </div>
+    
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="1" id="authority"  onclick="toggle(this, 'authorityshow+<%- index %>')" name="authority+<%- index %>" >
+    <label class="form-check-label" style="font-size: 16px;" for="authority">
+      Appeal to authority
+    </label>
+    
+    <div style="display:none;" id= 'authorityshow+<%- index %>'> 
+      <textarea id="authoritytext+<%- index %>" name="authoritytext+<%- index %>"  style="font-size: 14px;" rows="2" cols="50"></textarea>
+
+  </div>
+    
+  </div>
+
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="1" id="bkwt"  onclick="toggle(this, 'bkwtshow+<%- index %>')" name="bkwt+<%- index %>" >
+    <label class="form-check-label" style="font-size: 16px;" for="bkwt">
+      Black and white fallacy
+    </label>
+    
+    <div style="display:none;" id= 'bkwtshow+<%- index %>'> 
+      <textarea id="bkwttext+<%- index %>" name="bkwttext+<%- index %>"  style="font-size: 14px;" rows="2" cols="50"></textarea>
+
+  </div>
+    
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="1" id="cliches"  onclick="toggle(this, 'clichesshow+<%- index %>')" name="cliches+<%- index %>" >
+    <label class="form-check-label" style="font-size: 16px;" for="cliches">
+      Thought terminating cliches
+    </label>
+    
+    <div style="display:none;" id= 'clichesshow+<%- index %>'> 
+      <textarea id="clichestext+<%- index %>" name="clichestext+<%- index %>"  style="font-size: 14px;" rows="2" cols="50"></textarea>
+
+  </div>
+    
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="1" id="herring"  onclick="toggle(this, 'herringshow+<%- index %>')" name="herring+<%- index %>" >
+    <label class="form-check-label" style="font-size: 16px;" for="herring">
+      Red herring
+    </label>
+    
+    <div style="display:none;" id= 'herringshow+<%- index %>'> 
+      <textarea id="herringtext+<%- index %>" name="herringtext+<%- index %>"  style="font-size: 14px;" rows="2" cols="50"></textarea>
+
+  </div>
+    
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="1" id="strawmen"  onclick="toggle(this, 'strawmenshow+<%- index %>')" name="strawmen+<%- index %>" >
+    <label class="form-check-label" style="font-size: 16px;" for="strawmen">
+      Straw men
+    </label>
+    
+    <div style="display:none;" id= 'strawmenshow+<%- index %>'> 
+      <textarea id="strawmentext+<%- index %>" name="strawmentext+<%- index %>"  style="font-size: 14px;" rows="2" cols="50"></textarea>
+
+  </div>
+    
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="1" id="whatabout"  onclick="toggle(this, 'whataboutshow+<%- index %>')" name="whatabout+<%- index %>" >
+    <label class="form-check-label" style="font-size: 16px;" for="whatabout">
+      Whataboutisim
+    </label>
+    
+    <div style="display:none;" id= 'whataboutshow+<%- index %>'> 
+      <textarea id="whatabouttext+<%- index %>" name="whatabouttext+<%- index %>"  style="font-size: 14px;" rows="2" cols="50"></textarea>
+
+  </div>
+    
+  </div>
+
+
    
   </div>
 
@@ -172,16 +380,6 @@ Categories:
   <h5 class="card-title"> 
       <%= index %>/<%= posts.length %>  
       <!-- you can do link to post here if you would like, if link is in jsonfile like it is in uncensoredsamples.json:  <a href= "posts[k].link" target="blank" >link to post</a>   --> 
-    <br/>  <br/>
-    <b> Created UTC:  </b>  
-    <p class="card-text">
-
-           <%- posts[k].created_at %>
-                    
-       
-  
-
-      </p>
     
       <b> Tweet:   </b>    
     <p class="card-text">
@@ -190,18 +388,30 @@ Categories:
       </p>
       <%index=index+1; %>       
    
-Categories:
-<br/><br/>
+<b>Categories:</b>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="1" id="claim"  onclick="toggle(this, 'claimshow+<%- index %>')" name="claim+<%- index %>" >
+    <label class="form-check-label" style="font-size: 16px;" for="claim">
+      Is there a claim? 
+    </label>
+    
+    <div style="display:none;" id= 'claimshow+<%- index %>'> 
+      <textarea id="claimtext+<%- index %>" name="claimtext+<%- index %>"  style="font-size: 14px;" rows="2" cols="50"></textarea>
+
+  </div>
+     
+  </div>
+
  <!-- Name calling -->
   <div class="form-check">
     <input class="form-check-input" type="checkbox" value="1" id="namecalling"  onclick="toggle(this, 'namecallingshow+<%- index %>')" name="namecalling+<%- index %>" >
-    <label class="form-check-label" for="namecalling">
+    <label class="form-check-label" style="font-size: 16px;" for="namecalling">
       Name Calling 
     </label>
     
     <div style="display:none;" id= 'namecallingshow+<%- index %>'> 
-      <textarea id="namecallingtext+<%- index %>" name="namecallingtext+<%- index %>"  style="font-size: 1rem;" rows="2" cols="50">
-        </textarea>
+      <textarea id="namecallingtext+<%- index %>" name="namecallingtext+<%- index %>"  style="font-size: 14px;" rows="2" cols="50"></textarea>
 
   </div>
      
@@ -211,39 +421,235 @@ Categories:
   <!-- Repetition -->
   <div class="form-check">
     <input class="form-check-input" type="checkbox" value="1" id="repetition"  onclick="toggle(this, 'repetitionshow+<%- index %>')" name="repetition+<%- index %>" >
-    <label class="form-check-label" for="repetition">
+    <label class="form-check-label" style="font-size: 16px;" for="repetition">
       Repetition 
     </label>
     
     <div style="display:none;" id= 'repetitionshow+<%- index %>'> 
-      <textarea id="repetitiontext+<%- index %>" name="repetitiontext+<%- index %>"  style="font-size: 1rem;" rows="2" cols="50">
-        </textarea>
+      <textarea id="repetitiontext+<%- index %>" name="repetitiontext+<%- index %>"  style="font-size: 14px;" rows="2" cols="50"></textarea>
 
   </div>
     
   </div>
   <!-- End of Repetition -->
+
+    <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="1" id="slogan"  onclick="toggle(this, 'sloganshow+<%- index %>')" name="slogan+<%- index %>" >
+    <label class="form-check-label" style="font-size: 16px;" for="slogan">
+      Slogan 
+    </label>
+    
+    <div style="display:none;" id= 'sloganshow+<%- index %>'> 
+      <textarea id="slogantext+<%- index %>" name="slogantext+<%- index %>"  style="font-size: 14px;" rows="2" cols="50"></textarea>
+
+  </div>
+    
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="1" id="appealfear"  onclick="toggle(this, 'appealfearshow+<%- index %>')" name="appealfear+<%- index %>" >
+    <label class="form-check-label" style="font-size: 16px;" for="appealfear">
+      Appeal to fear 
+    </label>
+    
+    <div style="display:none;" id= 'appealfearshow+<%- index %>'> 
+      <textarea id="appealfeartext+<%- index %>" name="appealfeartext+<%- index %>"  style="font-size: 14px;" rows="2" cols="50"></textarea>
+
+  </div>
+    
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="1" id="doubt"  onclick="toggle(this, 'doubtshow+<%- index %>')" name="doubt+<%- index %>" >
+    <label class="form-check-label" style="font-size: 16px;" for="doubt">
+      Doubt 
+    </label>
+    
+    <div style="display:none;" id= 'doubtshow+<%- index %>'> 
+      <textarea id="doubttext+<%- index %>" name="doubttext+<%- index %>"  style="font-size: 14px;" rows="2" cols="50"></textarea>
+
+  </div>
+    
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="1" id="exagger"  onclick="toggle(this, 'exaggershow+<%- index %>')" name="exagger+<%- index %>" >
+    <label class="form-check-label" style="font-size: 16px;" for="exagger">
+      Exaggeration or Minimization 
+    </label>
+    
+    <div style="display:none;" id= 'exaggershow+<%- index %>'> 
+      <textarea id="exaggertext+<%- index %>" name="exaggertext+<%- index %>"  style="font-size: 14px;" rows="2" cols="50"></textarea>
+
+  </div>
+    
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="1" id="flagwave"  onclick="toggle(this, 'flagwaveshow+<%- index %>')" name="flagwave+<%- index %>" >
+    <label class="form-check-label" style="font-size: 16px;" for="flagwave">
+      Flag waving 
+    </label>
+    
+    <div style="display:none;" id= 'flagwaveshow+<%- index %>'> 
+      <textarea id="flagwavetext+<%- index %>" name="flagwavetext+<%- index %>"  style="font-size: 14px;" rows="2" cols="50"></textarea>
+
+  </div>
+    
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="1" id="loaded"  onclick="toggle(this, 'loadedshow+<%- index %>')" name="loaded+<%- index %>" >
+    <label class="form-check-label" style="font-size: 16px;" for="loaded">
+      Loaded language 
+    </label>
+    
+    <div style="display:none;" id= 'loadedshow+<%- index %>'> 
+      <textarea id="loadedtext+<%- index %>" name="loadedtext+<%- index %>"  style="font-size: 14px;" rows="2" cols="50"></textarea>
+
+  </div>
+    
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="1" id="reduct"  onclick="toggle(this, 'reductshow+<%- index %>')" name="reduct+<%- index %>" >
+    <label class="form-check-label" style="font-size: 16px;" for="reduct">
+      Reduction ad hitlerum 
+    </label>
+    
+    <div style="display:none;" id= 'reductshow+<%- index %>'> 
+      <textarea id="reducttext+<%- index %>" name="reducttext+<%- index %>"  style="font-size: 14px;" rows="2" cols="50"></textarea>
+
+  </div>
+    
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="1" id="bandwagon"  onclick="toggle(this, 'bandwagonshow+<%- index %>')" name="bandwagon+<%- index %>" >
+    <label class="form-check-label" style="font-size: 16px;" for="bandwagon">
+      Bandwagon 
+    </label>
+    
+    <div style="display:none;" id= 'bandwagonshow+<%- index %>'> 
+      <textarea id="bandwagontext+<%- index %>" name="bandwagontext+<%- index %>"  style="font-size: 14px;" rows="2" cols="50"></textarea>
+
+  </div>
+    
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="1" id="oversimp"  onclick="toggle(this, 'oversimpshow+<%- index %>')" name="oversimp+<%- index %>" >
+    <label class="form-check-label" style="font-size: 16px;" for="oversimp">
+      Causal oversimplification 
+    </label>
+    
+    <div style="display:none;" id= 'oversimpshow+<%- index %>'> 
+      <textarea id="oversimptext+<%- index %>" name="oversimptext+<%- index %>"  style="font-size: 14px;" rows="2" cols="50"></textarea>
+
+  </div>
+    
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="1" id="obfusc"  onclick="toggle(this, 'obfuscshow+<%- index %>')" name="obfusc+<%- index %>" >
+    <label class="form-check-label" style="font-size: 16px;" for="obfusc">
+      Obfuscation or vagueness
+    </label>
+    
+    <div style="display:none;" id= 'obfuscshow+<%- index %>'> 
+      <textarea id="obfusctext+<%- index %>" name="obfusctext+<%- index %>"  style="font-size: 14px;" rows="2" cols="50"></textarea>
+
+  </div>
+    
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="1" id="authority"  onclick="toggle(this, 'authorityshow+<%- index %>')" name="authority+<%- index %>" >
+    <label class="form-check-label" style="font-size: 16px;" for="authority">
+      Appeal to authority
+    </label>
+    
+    <div style="display:none;" id= 'authorityshow+<%- index %>'> 
+      <textarea id="authoritytext+<%- index %>" name="authoritytext+<%- index %>"  style="font-size: 14px;" rows="2" cols="50"></textarea>
+
+  </div>
+    
+  </div>
+
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="1" id="bkwt"  onclick="toggle(this, 'bkwtshow+<%- index %>')" name="bkwt+<%- index %>" >
+    <label class="form-check-label" style="font-size: 16px;" for="bkwt">
+      Black and white fallacy
+    </label>
+    
+    <div style="display:none;" id= 'bkwtshow+<%- index %>'> 
+      <textarea id="bkwttext+<%- index %>" name="bkwttext+<%- index %>"  style="font-size: 14px;" rows="2" cols="50"></textarea>
+
+  </div>
+    
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="1" id="cliches"  onclick="toggle(this, 'clichesshow+<%- index %>')" name="cliches+<%- index %>" >
+    <label class="form-check-label" style="font-size: 16px;" for="cliches">
+      Thought terminating cliches
+    </label>
+    
+    <div style="display:none;" id= 'clichesshow+<%- index %>'> 
+      <textarea id="clichestext+<%- index %>" name="clichestext+<%- index %>"  style="font-size: 14px;" rows="2" cols="50"></textarea>
+
+  </div>
+    
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="1" id="herring"  onclick="toggle(this, 'herringshow+<%- index %>')" name="herring+<%- index %>" >
+    <label class="form-check-label" style="font-size: 16px;" for="herring">
+      Red herring
+    </label>
+    
+    <div style="display:none;" id= 'herringshow+<%- index %>'> 
+      <textarea id="herringtext+<%- index %>" name="herringtext+<%- index %>"  style="font-size: 14px;" rows="2" cols="50"></textarea>
+
+  </div>
+    
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="1" id="strawmen"  onclick="toggle(this, 'strawmenshow+<%- index %>')" name="strawmen+<%- index %>" >
+    <label class="form-check-label" style="font-size: 16px;" for="strawmen">
+      Straw men
+    </label>
+    
+    <div style="display:none;" id= 'strawmenshow+<%- index %>'> 
+      <textarea id="strawmentext+<%- index %>" name="strawmentext+<%- index %>"  style="font-size: 14px;" rows="2" cols="50"></textarea>
+
+  </div>
+    
+  </div>
+
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="1" id="whatabout"  onclick="toggle(this, 'whataboutshow+<%- index %>')" name="whatabout+<%- index %>" >
+    <label class="form-check-label" style="font-size: 16px;" for="whatabout">
+      Whataboutisim
+    </label>
+    
+    <div style="display:none;" id= 'whataboutshow+<%- index %>'> 
+      <textarea id="whatabouttext+<%- index %>" name="whatabouttext+<%- index %>"  style="font-size: 14px;" rows="2" cols="50"></textarea>
+
+  </div>
+    
+  </div>
    
 
       
 </div>
 
 
-
-
 <!--<button type="submit" class="makejson btn btn-primary" value="Save to JSON file" style="width:25% !important"></button>-->
 
-
-
-
-
 <% } %>
-
-
-
-
-
-
 
 
 <button style="background-color:gray" type="button" class="back btn btn-primary" data-toggle="button" aria-pressed="false" autocomplete="off">

@@ -68,7 +68,7 @@ const fs = require('fs');
 
 
 
-var filename= './data/new_ebola.json'; //put your JSON file here
+var filename= './data/tjvirus_top_50_rt_tweets.json'; //put your JSON file here
 var writefile = './data/annotated.json';
 
 try{
@@ -158,10 +158,10 @@ app.post('/', function(req, res){
   console.log(req.body);
 
   
-
+  
   var formData = req.body;
   var jsonString = JSON.stringify(formData);
-  fs.writeFile('shruti.json', jsonString, (err) => {
+  fs.writeFile(writefile, jsonString, (err) => {
     // Error checking
     if (err) throw err;
     console.log("New data added");
