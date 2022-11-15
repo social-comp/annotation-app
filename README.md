@@ -41,15 +41,9 @@ npm start
 ```
 http://localhost:3000/
 
-## Things that are not done 
-
-* Was still in the processs of writing the annotations correctly to a JSON file 
 
 
-
-## Help
-
-email sophiaw@brandeis.edu if there are any issues if app is failing to start
+email phadke@uw.edu if there are any issues if app is failing to start
 
 
 ## Papers
